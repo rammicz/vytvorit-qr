@@ -36,12 +36,7 @@ export const DataForm: React.FC<DataFormProps> = ({ type, data, onChange }) => {
           />
         );
       case 'bank':
-        return (
-          <BankForm
-            data={data as BankData}
-            onChange={(newData) => onChange(newData)}
-          />
-        );
+        return <BankForm />;
       default:
         return null;
     }
