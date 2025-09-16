@@ -1,19 +1,6 @@
 import React from 'react';
-import { BankData } from '../../types';
 
-interface BankFormProps {
-  data: BankData;
-  onChange: (data: BankData) => void;
-}
-
-export const BankForm: React.FC<BankFormProps> = ({ data, onChange }) => {
-  const handleChange = (field: keyof BankData, value: string) => {
-    onChange({
-      ...data,
-      [field]: value
-    });
-  };
-
+export const BankForm: React.FC = () => {
   return (
     <div className="grid grid-cols-1 gap-1">
       {/* Recommendation message */}
