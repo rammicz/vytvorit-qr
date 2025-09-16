@@ -1,5 +1,7 @@
 # Vytvořte QR za 10 s
 
+🌐 **Aplikace je dostupná na [https://qr.aox.cz](https://qr.aox.cz)**
+
 Webová aplikace pro rychlé vytvoření QR kódů pro URL, Wi-Fi a vCard s možností přizpůsobení a exportu.
 
 ## Funkce
