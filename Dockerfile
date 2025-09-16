@@ -27,6 +27,10 @@ COPY nginx.conf /etc/nginx/nginx.conf
 # Kopírování CNAME souboru pro custom doménu
 COPY public/CNAME /usr/share/nginx/html/CNAME
 
-EXPOSE 80
+# Kopírování startup scriptu
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
 
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 8080
+
+CMD ["/start.sh"]
