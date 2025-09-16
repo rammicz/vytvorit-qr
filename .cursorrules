@@ -1,0 +1,58 @@
+# Vytvořte QR kód za 1 sekundu - Hlavní cíle projektu
+
+## 🎯 Obchodní cíle
+- Zvýšit povědomí o AOX díky sdílitelnému nástroji
+- Ověřit poptávku po pokročilých funkcích (signály pro budoucí placené featury)
+- Nasazení na produkční doménu qr.aox.cz
+
+## 🚀 Uživatelské cíle
+- Vytvořit čitelný QR kód za **méně než 10 sekund** od otevření stránky
+- Jednoduše **brandovat** (text/logo), **nastavit barvy** a **velikost**
+- Snadno **stáhnout** a **sdílet odkazem**
+- **Above fold** layout - všechny hlavní prvky viditelné bez scrollování
+
+## 📱 Podporované typy QR kódů
+1. **URL** - Webové odkazy
+2. **Wi-Fi** - Připojení k Wi-Fi síti (SSID, heslo, typ zabezpečení)
+3. **vCard** - Kontaktní informace (jméno, telefon, email, adresa)
+4. **Bank** - Český bankovní příkaz (SPAYD standard)
+
+## 🎨 Klíčové funkce
+- **Živý náhled** s okamžitou aktualizací
+- **Přednastavené barevné palety** - tmavé pro popředí, světlé pro pozadí
+- **Obsah ve středu** - text nebo logo s bílým podkladem
+- **Export** - PNG, SVG, PDF
+- **Kopírování** do schránky
+- **Permalink** systém přes URL hash (bez backendu)
+
+## 🏗️ Technické požadavky
+- **Frontend**: React 18 + TypeScript + Vite
+- **Bez backendu** - vše běží v prohlížeči
+- **Statické nasazení** na GitHub Pages
+- **Responzivní design** pro mobily i desktop
+- **Přístupnost** (WCAG AA)
+
+## 📊 Metriky úspěchu
+- **TTFQR** (time to first QR) median < **10 s**
+- **Stažení** (≥1 soubor) na návštěvu > **40 %**
+- **Použití středu** (text/logo) 25–50 % QR
+- **First load** < **2 s**
+- **Bundle size** < **250 kB gzip**
+
+## 🎯 Akceptační kritéria (MVP)
+1. QR (URL/Wi-Fi/vCard/Bank) skenovatelný ve 3 čtečkách (iOS/Android/desktop) při **512 px**
+2. **URL hash** plně obnoví stav (typ + data + volby + barvy + střed)
+3. Export **PNG/SVG/PDF** funkční v Chrome/Firefox/Safari/Edge
+4. **Kompaktní layout** - formulář vlevo, QR vpravo, vše above fold
+
+## 🚫 Ne-cíle (MVP)
+- Přihlášení/účty, hromadná generace, API
+- Krátké odkazy/redirecty (vyžadovaly by backend)
+- Pokročilý brand management (palety, šablony)
+- Dark/Light mód
+
+## 📝 Commit pravidla
+- Commitovat pouze **schválené a funkční celky** do GitHubu
+- Repozitář: https://github.com/rammicz/vytvorit-qr
+- Popisné commit messages s typem (feat/fix/docs/style/refactor)
+- Automatické nasazení z main větve na qr.aox.cz
