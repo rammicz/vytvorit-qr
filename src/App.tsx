@@ -395,7 +395,20 @@ function App() {
       <footer className="bg-white border-t border-gray-200 mt-16">
         <div className="max-w-7xl mx-auto px-4 py-8">
           <div className="text-center text-slate-600">
-            <p>&copy; 2024 AOX.cz - Vytvořte QR kód za 10 sekund</p>
+            <p>
+              Tato aplikace je součástí sbírky aplikací{' '}
+              <a 
+                href="https://www.aox.cz" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:text-blue-800 font-medium transition-colors"
+              >
+                www.aox.cz
+              </a>
+            </p>
+            <p className="mt-2 text-sm text-slate-500">
+              &copy; 2024 AOX.cz - Vytvořte QR kód za 10 sekund
+            </p>
           </div>
         </div>
       </footer>
