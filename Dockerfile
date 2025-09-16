@@ -6,8 +6,8 @@ WORKDIR /app
 # Kopírování package files
 COPY package*.json ./
 
-# Instalace závislostí
-RUN npm ci --only=production
+# Instalace závislostí (včetně devDependencies pro build)
+RUN npm ci
 
 # Kopírování zdrojového kódu
 COPY . .
