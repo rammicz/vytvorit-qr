@@ -17,7 +17,7 @@ steps:
       - '--image'
       - 'gcr.io/$PROJECT_ID/vytvorit-qr:$COMMIT_SHA'
       - '--region'
-      - 'europe-west1'
+      - 'europe-central2'
       - '--platform'
       - 'managed'
       - '--allow-unauthenticated'
@@ -31,6 +31,20 @@ steps:
       - '10'
       - '--set-env-vars'
       - 'NODE_ENV=production'
+
+  # Map custom domain to Cloud Run service
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      - 'run'
+      - 'domain-mappings'
+      - 'create'
+      - '--service'
+      - 'vytvorit-qr'
+      - '--domain'
+      - 'qr.aox.cz'
+      - '--region'
+      - 'europe-central2'
 
 # Store images in Container Registry
 images:
