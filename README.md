@@ -100,9 +100,6 @@ Aplikace je nasazena na Google Cloud Run s automatickým CI/CD:
 2. Upload `dist/` složky na webový server
 3. Konfigurace serveru pro SPA routing
 
-### Vývojářská pravidla
-📋 **Před každým pushnutím si přečti [DEVELOPMENT_RULES.md](./DEVELOPMENT_RULES.md)**
-
 ## Metriky úspěchu
 
 - **TTFQR** (time to first QR) < 10s

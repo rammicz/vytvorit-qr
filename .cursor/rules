@@ -1,41 +1,37 @@
-# Pravidla pro vývoj - Vytvořte QR kód
+# Vývojářská pravidla - Vytvořte QR kód
 
 ## 🚀 Před každým pushnutím
 
-### 1. Lokální testování
-```bash
-# VŽDY spustit před pushnutím
-npm run build
-
-# Pokud máš Docker Desktop spuštěný
-docker build -t vytvorit-qr-local .
-```
-
-### 2. TypeScript kontrola
+### Lokální testování
+- VŽDY spustit `npm run build` před pushnutím
+- Pokud máš Docker Desktop: `docker build -t vytvorit-qr-local .`
 - Všechny TypeScript chyby MUSÍ být opraveny před pushnutím
+
+### TypeScript kontrola
 - Používat `tsc --noEmit` pro rychlou kontrolu bez buildu
 - Nepoužívané proměnné/funkce/props MUSÍ být odstraněny
+- Všechny `any` typy musí být nahrazeny konkrétními typy
 
 ## 🐳 Docker & Cloud Run pravidla
 
-### 3. Port konfigurace
-- **Cloud Run** vždy používá `PORT` environment variable (výchozí 8080)
-- **Nginx** musí naslouchat na dynamickém portu, ne na pevném 80
+### Port konfigurace
+- Cloud Run vždy používá `PORT` environment variable (výchozí 8080)
+- Nginx musí naslouchat na dynamickém portu, ne na pevném 80
 - Používat startup script pro nahrazení portu v runtime
 
-### 4. Dependencies
-- **Build stage** MUSÍ instalovat VŠECHNY dependencies (včetně devDependencies)
+### Dependencies
+- Build stage MUSÍ instalovat VŠECHNY dependencies (včetně devDependencies)
 - Používat `npm ci` místo `npm ci --only=production` pro build
 - DevDependencies se odstraní automaticky v multi-stage build
 
-### 5. Region optimalizace
+### Region optimalizace
 - Pro ČR používat `europe-central2` (Warsaw) - nejlepší latence
 - Alternativně `europe-west3` (Frankfurt) - také dobré pro ČR
-- **NE** `europe-west1` (Belgium) - příliš daleko
+- NE `europe-west1` (Belgium) - příliš daleko
 
 ## 📝 Commit pravidla
 
-### 6. Commit messages
+### Commit messages
 ```
 fix: popis opravy
 feat: popis nové funkce
@@ -44,26 +40,26 @@ style: formátování, bez změn logiky
 refactor: refaktoring kódu
 ```
 
-### 7. Atomic commits
+### Atomic commits
 - Jeden commit = jedna logická změna
 - Necommituj nefunkční kód
 - Testovat před každým commitem
 
 ## 🔧 Troubleshooting checklist
 
-### 8. Build selhává?
+### Build selhává?
 - [ ] `npm run build` funguje lokálně?
 - [ ] Všechny TypeScript chyby opraveny?
 - [ ] DevDependencies nainstalovány v Dockerfile?
 - [ ] Port správně nakonfigurován pro Cloud Run?
 
-### 9. Cloud Run deployment selhává?
+### Cloud Run deployment selhává?
 - [ ] Container naslouchá na `PORT` environment variable?
 - [ ] Startup script má správná oprávnění (`chmod +x`)?
 - [ ] Nginx konfigurace používá dynamický port?
 - [ ] Cloud Run service má správný port nastavený?
 
-### 10. Performance problémy?
+### Performance problémy?
 - [ ] Správný region pro cílovou lokalitu?
 - [ ] Bundle size pod kontrolou (< 250 kB gzip)?
 - [ ] Gzip komprese zapnutá?
@@ -106,6 +102,20 @@ gcloud run services describe vytvorit-qr --region=europe-central2
 - [ ] Commit message je popisný
 - [ ] Změny jsou atomic a funkční
 - [ ] Region je optimalizovaný pro cílovou lokalitu
+
+## 🚨 Časté chyby a řešení
+
+### "tsc: not found"
+- **Příčina**: `npm ci --only=production` neinstaluje devDependencies
+- **Řešení**: Použít `npm ci` v Dockerfile
+
+### "Container failed to start and listen on port"
+- **Příčina**: Nginx naslouchá na pevném portu 80 místo `$PORT`
+- **Řešení**: Použít startup script pro dynamický port
+
+### "Type error: Property does not exist"
+- **Příčina**: Nepoužívané props v komponentách
+- **Řešení**: Odstranit nepoužívané props nebo je správně typovat
 
 ---
 
