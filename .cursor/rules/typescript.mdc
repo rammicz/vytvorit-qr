@@ -1,0 +1,27 @@
+---
+description: TypeScript pravidla a kontrola chyb
+globs: ["*.ts", "*.tsx"]
+alwaysApply: true
+---
+
+# TypeScript pravidla
+
+## Před každým pushnutím
+- VŽDY spustit `npm run build` před pushnutím
+- Všechny TypeScript chyby MUSÍ být opraveny před pushnutím
+- Nepoužívané proměnné/funkce/props MUSÍ být odstraněny
+- Všechny `any` typy musí být nahrazeny konkrétními typy
+
+## Quick fixes
+```bash
+# Rychlá kontrola
+npx tsc --noEmit
+
+# Oprava automatických chyb
+npx tsc --noEmit --fix
+```
+
+## Časté chyby
+- **"Property does not exist"** - Odstranit nepoužívané props nebo je správně typovat
+- **"Implicitly has 'any' type"** - Přidat explicitní typování
+- **"Declared but never used"** - Odstranit nepoužívané proměnné

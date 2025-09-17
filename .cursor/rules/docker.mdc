@@ -1,0 +1,35 @@
+---
+description: Docker a Cloud Run konfigurace
+globs: ["Dockerfile", "cloudbuild.yaml", "nginx.conf", "start.sh"]
+alwaysApply: true
+---
+
+# Docker & Cloud Run pravidla
+
+## Port konfigurace
+- Cloud Run vždy používá `PORT` environment variable (výchozí 8080)
+- Nginx musí naslouchat na dynamickém portu, ne na pevném 80
+- Používat startup script pro nahrazení portu v runtime
+
+## Dependencies
+- Build stage MUSÍ instalovat VŠECHNY dependencies (včetně devDependencies)
+- Používat `npm ci` místo `npm ci --only=production` pro build
+- DevDependencies se odstraní automaticky v multi-stage build
+
+## Region optimalizace
+- Pro ČR používat `europe-central2` (Warsaw) - nejlepší latence
+- Alternativně `europe-west3` (Frankfurt) - také dobré pro ČR
+- NE `europe-west1` (Belgium) - příliš daleko
+
+## Quick fixes
+```bash
+# Lokální test
+docker build -t test .
+
+# Spuštění kontejneru
+docker run -p 8080:8080 -e PORT=8080 test
+```
+
+## Časté chyby
+- **"tsc: not found"** - Použít `npm ci` místo `npm ci --only=production`
+- **"Container failed to start and listen on port"** - Použít startup script pro dynamický port

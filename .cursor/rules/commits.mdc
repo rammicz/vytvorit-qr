@@ -1,0 +1,29 @@
+---
+description: Commit pravidla a Git workflow
+globs: ["*.md", "package.json"]
+alwaysApply: false
+---
+
+# Commit pravidla
+
+## Commit messages
+```
+fix: popis opravy
+feat: popis nové funkce
+docs: změny v dokumentaci
+style: formátování, bez změn logiky
+refactor: refaktoring kódu
+```
+
+## Atomic commits
+- Jeden commit = jedna logická změna
+- Necommituj nefunkční kód
+- Testovat před každým commitem
+
+## Pre-deployment checklist
+- [ ] `npm run build` prošel bez chyb
+- [ ] Všechny TypeScript chyby opraveny
+- [ ] Docker build funguje lokálně (pokud je Docker dostupný)
+- [ ] Commit message je popisný
+- [ ] Změny jsou atomic a funkční
+- [ ] Region je optimalizovaný pro cílovou lokalitu

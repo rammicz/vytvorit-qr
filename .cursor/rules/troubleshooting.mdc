@@ -1,0 +1,34 @@
+---
+description: Troubleshooting a debug pravidla
+globs: ["*.log", "*.txt"]
+alwaysApply: false
+---
+
+# Troubleshooting
+
+## Build selhává?
+- [ ] `npm run build` funguje lokálně?
+- [ ] Všechny TypeScript chyby opraveny?
+- [ ] DevDependencies nainstalovány v Dockerfile?
+- [ ] Port správně nakonfigurován pro Cloud Run?
+
+## Cloud Run deployment selhává?
+- [ ] Container naslouchá na `PORT` environment variable?
+- [ ] Startup script má správná oprávnění (`chmod +x`)?
+- [ ] Nginx konfigurace používá dynamický port?
+- [ ] Cloud Run service má správný port nastavený?
+
+## Performance problémy?
+- [ ] Správný region pro cílovou lokalitu?
+- [ ] Bundle size pod kontrolou (< 250 kB gzip)?
+- [ ] Gzip komprese zapnutá?
+- [ ] Cache headers správně nastavené?
+
+## Cloud Run debug
+```bash
+# Logy služby
+gcloud run services logs vytvorit-qr --region=europe-central2
+
+# Popis služby
+gcloud run services describe vytvorit-qr --region=europe-central2
+```
