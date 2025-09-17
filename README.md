@@ -88,11 +88,20 @@ END:VCARD
 
 ## Nasazení
 
-Aplikace je připravena pro statické nasazení na `qr.aox.cz`:
+Aplikace je nasazena na Google Cloud Run s automatickým CI/CD:
 
+- **URL**: https://qr.aox.cz
+- **Region**: europe-central2 (Warsaw) - optimalizováno pro ČR
+- **Build**: Automatický při pushnutí na main branch
+- **Docker**: Multi-stage build s nginx
+
+### Lokální nasazení
 1. Build: `npm run build`
 2. Upload `dist/` složky na webový server
 3. Konfigurace serveru pro SPA routing
+
+### Vývojářská pravidla
+📋 **Před každým pushnutím si přečti [DEVELOPMENT_RULES.md](./DEVELOPMENT_RULES.md)**
 
 ## Metriky úspěchu
 
