@@ -21,9 +21,6 @@ refactor: refaktoring kódu
 - Testovat před každým commitem
 
 ## Pre-deployment checklist
-- [ ] `npm run build` prošel bez chyb
-- [ ] Všechny TypeScript chyby opraveny
-- [ ] Docker build funguje lokálně (pokud je Docker dostupný)
 - [ ] Commit message je popisný
 - [ ] Změny jsou atomic a funkční
-- [ ] Region je optimalizovaný pro cílovou lokalitu
+- [ ] Všechny testy prošly (viz typescript.mdc a docker.mdc)

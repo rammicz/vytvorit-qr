@@ -33,3 +33,12 @@ docker run -p 8080:8080 -e PORT=8080 test
 ## Časté chyby
 - **"tsc: not found"** - Použít `npm ci` místo `npm ci --only=production`
 - **"Container failed to start and listen on port"** - Použít startup script pro dynamický port
+
+## Debug
+```bash
+# Logy služby
+gcloud run services logs vytvorit-qr --region=europe-central2
+
+# Popis služby  
+gcloud run services describe vytvorit-qr --region=europe-central2
+```
